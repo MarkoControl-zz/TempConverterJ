@@ -1,6 +1,7 @@
 package JTempConverter.view;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import JTempConverter.controller.TempController;
 
@@ -16,11 +17,11 @@ public class TempPanel extends JPanel {
 
     private JPanel pIpane;
     private JPanel pOpane;
-
     private JPanel buttonPane;
+
     public TempPanel(TempController control){
         this.control = control;
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridLayout(3, 1));
 
         /*
         ---------------------------------------------------------------
@@ -35,16 +36,15 @@ public class TempPanel extends JPanel {
                 "Fahrenheit -> Kelvin",
                 "Kelvin -> Fahrenheit" };
 
-        pIpane = new JPanel(new GridLayout(1, 2, 10, 10));
-        pOpane = new JPanel(new GridLayout(1, 1, 10, 10));
-
+        pIpane = new JPanel(new FlowLayout(FlowLayout.CENTER, 50,25));
+        pOpane = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 20));
+        buttonPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 50,15));
 
         lOutput = new JLabel("output");
         tInput = new JTextField();
 
         bConvert = new JButton("Convert");
         bReset = new JButton("Reset");
-
 
         dConversionMenu = new JComboBox(combos);
 
@@ -54,7 +54,8 @@ public class TempPanel extends JPanel {
         ---------------------------------------------------------------
          */
 
-        // VOID 
+        tInput.setPreferredSize(new Dimension(150, 25));
+        lOutput.setFont(new Font("Arial", Font.PLAIN, 18));
 
         /*
         ---------------------------------------------------------------
@@ -65,13 +66,14 @@ public class TempPanel extends JPanel {
         pIpane.add(tInput);
         pIpane.add(dConversionMenu);
 
-
         pOpane.add(lOutput);
-        pOpane.add(bConvert);
-        pOpane.add(bReset);
 
-        this.add(pIpane, BorderLayout.NORTH);
-        this.add(lOutput, BorderLayout.CENTER);
+        buttonPane.add(bConvert);
+        buttonPane.add(bReset);
+
+        this.add(pIpane);
+        this.add(pOpane);
+        this.add(buttonPane);
     }
 
     public String getInput() { return this.tInput.getText(); }
