@@ -35,8 +35,9 @@ public class TempPanel extends JPanel {
                 "Fahrenheit -> Kelvin",
                 "Kelvin -> Fahrenheit" };
 
-        pIpane = new JPanel();
-        pOpane = new JPanel();
+        pIpane = new JPanel(new GridLayout(1, 2, 10, 10));
+        pOpane = new JPanel(new GridLayout(1, 1, 10, 10));
+
 
         lOutput = new JLabel("output");
         tInput = new JTextField();
@@ -61,15 +62,16 @@ public class TempPanel extends JPanel {
         ---------------------------------------------------------------
          */
 
-        pIpane.add(dConversionMenu);
         pIpane.add(tInput);
+        pIpane.add(dConversionMenu);
+
 
         pOpane.add(lOutput);
         pOpane.add(bConvert);
         pOpane.add(bReset);
 
         this.add(pIpane, BorderLayout.NORTH);
-        this.add(lOutput, BorderLayout.SOUTH);
+        this.add(lOutput, BorderLayout.CENTER);
     }
 
     public String getInput() { return this.tInput.getText(); }
