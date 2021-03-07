@@ -44,7 +44,7 @@ public class TempPanel extends JPanel {
         pOpane = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 20));
         buttonPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 50,15));
 
-        lOutput = new JLabel("output");
+        lOutput = new JLabel("[ ]");
         tInput = new JTextField();
 
         bConvert = new JButton("Convert");
@@ -111,4 +111,6 @@ public class TempPanel extends JPanel {
     public String getCombo() { return (String) this.dConversionMenu.getSelectedItem(); }
 
     public void setLabelText(String str) { this.lOutput.setText(str); }
+
+    public void resetTextField() { this.tInput.setText(""); }
 }
