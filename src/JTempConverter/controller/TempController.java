@@ -23,18 +23,55 @@ public class TempController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object o = e.getActionCommand();
-        if ((o.equals("Convert")) && (tp.getCombo().equals("Celsius -> Fahrenheit"))) {
-            double temp = Double.parseDouble(tp.getInput());
-            tm.celsiusToFahrenheit(temp);
-            String txt = "" + tm.getTemperature();
-            tp.setLabelText(txt);
+        try {
+            if ((o.equals("Convert")) && (tp.getCombo().equals("Celsius -> Fahrenheit"))) {
+                double temp = Double.parseDouble(tp.getInput());
+                tm.celsiusToFahrenheit(temp);
+                String txt = "" + tm.getTemperature();
+                tp.setLabelText(txt + " °F");
+            }
+
+            if ((o.equals("Convert")) && (tp.getCombo().equals("Fahrenheit -> Celsius"))) {
+                double temp = Double.parseDouble(tp.getInput());
+                tm.fahrenheitToCelsius(temp);
+                String txt = "" + tm.getTemperature();
+                tp.setLabelText(txt + " °C");
+            }
+
+            if ((o.equals("Convert") && (tp.getCombo().equals("Celsius -> Kelvin")))) {
+                double temp = Double.parseDouble(tp.getInput());
+                tm.celsiusToKelvin(temp);
+                String txt = "" + tm.getTemperature();
+                tp.setLabelText(txt + " K");
+            }
+
+            if ((o.equals("Convert") && (tp.getCombo().equals("Kelvin -> Celsius")))) {
+                double temp = Double.parseDouble(tp.getInput());
+                tm.kelvinToCelsius(temp);
+                String txt = "" + tm.getTemperature();
+                tp.setLabelText(txt + " °C");
+            }
+
+            if ((o.equals("Convert") && (tp.getCombo().equals("Fahrenheit -> Kelvin")))) {
+                double temp = Double.parseDouble(tp.getInput());
+                tm.fahrenheitToKelvin(temp);
+                String txt = "" + tm.getTemperature();
+                tp.setLabelText(txt + " K");
+            }
+
+            if ((o.equals("Convert") && (tp.getCombo().equals("Kelvin -> Fahrenheit")))) {
+                double temp = Double.parseDouble(tp.getInput());
+                tm.kelvinToFahrenheit(temp);
+                String txt = "" + tm.getTemperature();
+                tp.setLabelText(txt + " °F");
+            }
+        }catch (NumberFormatException ne){
+            ;
         }
 
-        if ((o.equals("Convert")) && (tp.getCombo().equals("Fahrenheit -> Celsius"))) {
-            double temp = Double.parseDouble(tp.getInput());
-            tm.fahrenheitToCelsius(temp);
-            String txt = "" + tm.getTemperature();
-            tp.setLabelText(txt);
+        if((o.equals("Reset"))){
+            tp.resetTextField();
+            tp.setLabelText("");
         }
     }
 }
