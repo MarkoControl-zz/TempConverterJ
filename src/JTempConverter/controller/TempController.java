@@ -71,7 +71,7 @@ public class TempController implements ActionListener {
 
         if((o.equals("Reset"))){
             tp.resetTextField();
-            tp.setLabelText("");
+            tp.setLabelText("[ ]");
         }
     }
 }
