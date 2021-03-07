@@ -66,7 +66,7 @@ public class TempController implements ActionListener {
                 tp.setLabelText(txt + " °F");
             }
         }catch (NumberFormatException ne){
-            ;
+            tp.setLabelText("Gib eine zahl ein!!!");
         }
 
         if((o.equals("Reset"))){
